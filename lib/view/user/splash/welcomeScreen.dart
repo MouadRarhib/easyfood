@@ -45,31 +45,32 @@ class WelcomeView extends StatelessWidget {
                     ),
                 50.verticalSpace,
                 BigText(
-                  text: 'Get your Chair delivered to your home',
+                  text: 'Cook the meal',
                   color: AppColors.titlecolor,
-                  size: 19,
+                  size: 25,
                 ).animate().slideY(
                       duration: 300.ms,
                       begin: -1,
                       curve: Curves.easeInSine,
                     ),
-                50.verticalSpace,
+                30.verticalSpace,
                 SmallText(
                   text:
-                      'The best delivery app in town for \ndelivering your daily fresh Chairs',
-                  size: 16,
+                      'Now you have to spend close to an hour battling with spices preparing your meal',
+                  size: 14,
                   color: AppColors.titlecolor,
                 ).animate().fade().slideY(
                       duration: 300.ms,
                       begin: 1,
                       curve: Curves.easeInSine,
                     ),
-                70.verticalSpace,
+                80.verticalSpace,
                 Padding(
                   padding: EdgeInsets.only(bottom: 120.w),
                   child: CustomButton(
                     text: 'Shop now',
                     onTap: () => Get.offNamed(Routes.SignIn),
+                    isLoading: false,
                   ).animate().fade().slideY(
                         duration: 300.ms,
                         begin: 1,

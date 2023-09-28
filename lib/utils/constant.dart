@@ -1,7 +1,8 @@
 class Constants {
   // Backend connection
-  static const String baseUrl = 'http://192.168.1.117:8000/api/food';
-  static const String baseUrlauth = 'http://192.168.1.117:8000/api';
+  static const String baseUrl =
+      'http://192.168.1.101:8001/api/food'; //nodejs server
+  static String baseUrlauth = 'http://192.168.1.101:8001/api'; // laravel server
 
   // Assets
   static const logo = 'assets/images/logo.png';
@@ -10,6 +11,7 @@ class Constants {
   static const cart = 'assets/images/cart.png';
   static const home = 'assets/images/home.png';
   static const back = 'assets/images/Arrowback.png';
+  static const avatar = 'assets/images/avatar.png';
 
   // Cards
   static const card1 = 'assets/images/Card1.png';

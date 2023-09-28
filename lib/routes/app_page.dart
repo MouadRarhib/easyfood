@@ -5,6 +5,8 @@ import 'package:easyfood/view/user/authentification/signin.dart';
 import 'package:easyfood/view/user/cart/cart_page.dart';
 import 'package:easyfood/view/user/details/details_page.dart';
 import 'package:easyfood/view/user/home/HomeScreen.dart';
+import 'package:easyfood/view/user/navbar/Bottom_nav_bar.dart';
+import 'package:easyfood/view/user/person/person_screen.dart';
 import 'package:easyfood/view/user/splash/Binding.dart';
 import 'package:easyfood/view/user/splash/SplashScreen.dart';
 import 'package:get/get.dart';
@@ -32,6 +34,14 @@ class AppPages {
     GetPage(
       name: _Paths.SignIn,
       page: () => const SignIn(),
+    ),
+    GetPage(
+      name: _Paths.NavBar,
+      page: () => BottomNavBar(),
+    ),
+    GetPage(
+      name: _Paths.PERSON,
+      page: () => PersonPage(),
     ),
   ];
 }

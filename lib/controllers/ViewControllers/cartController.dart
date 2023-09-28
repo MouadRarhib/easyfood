@@ -58,6 +58,15 @@ class CartController extends GetxController {
     }
 
     saveCartItems(); // Save the updated cart items
+
+    // Show a Snackbar
+    final snackBar = SnackBar(
+      content: Text('${food.name} added to cart'),
+      duration: Duration(seconds: 2), // Adjust the duration as needed
+    );
+
+    // Find the ScaffoldMessenger and show the Snackbar
+    ScaffoldMessenger.of(Get.context!).showSnackBar(snackBar);
   }
 
   void saveCartItems() async {

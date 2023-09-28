@@ -40,7 +40,7 @@ class SignUp extends StatelessWidget {
         // Call the register method from your AuthService
         await authService.register(name, email, phone, password);
         // Optionally, you can navigate to the next screen after successful registration.
-        Get.to(HomeScreen());
+        Get.offNamed(Routes.NavBar);
       } catch (e) {
         // Handle registration error (e.g., display an error message)
         print('Registration error: $e');
@@ -48,20 +48,15 @@ class SignUp extends StatelessWidget {
     }
 
     return Scaffold(
+      backgroundColor: Colors.grey.shade300,
       body: Stack(
         children: [
-          Positioned.fill(
-            child: Image.asset(
-              Constants.background,
-              fit: BoxFit.cover,
-            ),
-          ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: width / 6),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                10.verticalSpace,
+                50.verticalSpace,
                 Container(
                   height: Dimenssion.height25(context) * 6,
                   child: Image.asset(
@@ -81,7 +76,8 @@ class SignUp extends StatelessWidget {
                     borderRadius: BorderRadius.circular(
                         20.0), // Adjust the value as needed
                     border: Border.all(
-                      color: Colors.grey, // You can change the border color
+                      color: AppColors
+                          .textColor, // You can change the border color
                       width: 2.0, // You can adjust the border width
                     ),
                   ),
@@ -114,7 +110,8 @@ class SignUp extends StatelessWidget {
                     borderRadius: BorderRadius.circular(
                         20.0), // Adjust the value as needed
                     border: Border.all(
-                      color: Colors.grey, // You can change the border color
+                      color: AppColors
+                          .textColor, // You can change the border color
                       width: 2.0, // You can adjust the border width
                     ),
                   ),
@@ -145,7 +142,8 @@ class SignUp extends StatelessWidget {
                     borderRadius: BorderRadius.circular(
                         20.0), // Adjust the value as needed
                     border: Border.all(
-                      color: Colors.grey, // You can change the border color
+                      color: AppColors
+                          .textColor, // You can change the border color
                       width: 2.0, // You can adjust the border width
                     ),
                   ),
@@ -175,7 +173,8 @@ class SignUp extends StatelessWidget {
                     borderRadius: BorderRadius.circular(
                         20.0), // Adjust the value as needed
                     border: Border.all(
-                      color: Colors.grey, // You can change the border color
+                      color: AppColors
+                          .textColor, // You can change the border color
                       width: 2.0, // You can adjust the border width
                     ),
                   ),
@@ -225,6 +224,7 @@ class SignUp extends StatelessWidget {
                   child: CustomButton(
                     text: 'Register',
                     onTap: register,
+                    isLoading: false,
                   ).animate().fade().slideY(
                         duration: 300.ms,
                         begin: 1,

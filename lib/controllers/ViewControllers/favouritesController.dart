@@ -22,6 +22,7 @@ class FavouritesController extends GetxController {
   void removeFromFavorites(Food food) {
     favoriteItems.remove(food);
     saveFavoriteItems();
+    update();
   }
 
   void saveFavoriteItems() async {

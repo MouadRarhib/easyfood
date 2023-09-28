@@ -1,5 +1,6 @@
 import 'package:easyfood/controllers/AuthController/auth_service.dart';
 import 'package:easyfood/controllers/AuthController/user_controller.dart';
+import 'package:easyfood/controllers/FoodController.dart';
 import 'package:easyfood/routes/app_page.dart';
 import 'package:easyfood/utils/big_text.dart';
 import 'package:easyfood/utils/colors.dart';
@@ -16,9 +17,14 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class SignIn extends StatelessWidget {
+class SignIn extends StatefulWidget {
   const SignIn({super.key});
 
+  @override
+  State<SignIn> createState() => _SignInState();
+}
+
+class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -27,43 +33,44 @@ class SignIn extends StatelessWidget {
     TextEditingController passwordcontroller = TextEditingController();
     Get.put(AuthService());
     Get.put(UserController());
+    Get.lazyPut(() => FoodController());
+    bool isLoading = false;
 
     void login() async {
       final email = emailcontroller.text;
       final password = passwordcontroller.text;
-      final authService =
-          Get.find<AuthService>(); // Get your AuthService instance
-      final userController =
-          Get.find<UserController>(); // Get your UserController instance
+      final authService = Get.find<AuthService>();
+      final userController = Get.find<UserController>();
 
       try {
-        // Call the login method from your AuthService
+        // Set isLoading to true to show the loading indicator
+        setState(() {
+          isLoading = true;
+        });
+
+        // Perform the login operation
         await authService.login(email, password);
 
-        // After successful login, you can do additional actions such as
-        // fetching user data, navigating to the next screen, etc.
+        // After successful login, you can do additional actions
+        // ...
 
-        // Example: await userController.getUser(); // Fetch user data
-        Get.to(HomeScreen()); // Navigate to the next screen
+        Get.offNamed(Routes.NavBar); // Navigate to the next screen
       } catch (e) {
         // Handle login error (e.g., display an error message)
         print('Login error: $e');
+      } finally {
+        // Set isLoading to false to hide the loading indicator
+        setState(() {
+          isLoading = false;
+        });
       }
     }
 
     return Scaffold(
+      backgroundColor: Colors.grey.shade300,
       body: SingleChildScrollView(
         child: Stack(
           children: [
-            Container(
-              height: height,
-              child: Positioned.fill(
-                child: Image.asset(
-                  Constants.background,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: width / 6),
               child: Column(
@@ -98,7 +105,8 @@ class SignIn extends StatelessWidget {
                       borderRadius: BorderRadius.circular(
                           20.0), // Adjust the value as needed
                       border: Border.all(
-                        color: Colors.grey, // You can change the border color
+                        color: AppColors
+                            .textColor, // You can change the border color
                         width: 2.0, // You can adjust the border width
                       ),
                     ),
@@ -133,12 +141,14 @@ class SignIn extends StatelessWidget {
                       borderRadius: BorderRadius.circular(
                           20.0), // Adjust the value as needed
                       border: Border.all(
-                        color: Colors.grey, // You can change the border color
+                        color: AppColors
+                            .textColor, // You can change the border color
                         width: 2.0, // You can adjust the border width
                       ),
                     ),
                     child: TextField(
                       controller: passwordcontroller,
+                      obscureText: true,
                       decoration: InputDecoration(
                         labelText: 'Password',
                         labelStyle: TextStyle(
@@ -182,7 +192,12 @@ class SignIn extends StatelessWidget {
                     padding: EdgeInsets.only(bottom: 120.w),
                     child: CustomButton(
                       text: 'Login',
-                      onTap: login,
+                      isLoading: isLoading, // Add the isLoading parameter here
+                      onTap: () {
+                        if (!isLoading) {
+                          login();
+                        }
+                      },
                     ).animate().fade().slideY(
                           duration: 300.ms,
                           begin: 1,

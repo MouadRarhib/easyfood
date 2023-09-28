@@ -40,10 +40,10 @@ class DetailsFoodPage extends StatelessWidget {
 
     Get.put(CartController());
     return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
+      backgroundColor: Colors.grey.shade300,
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(top: 20, right: 10, left: 10),
+          padding: EdgeInsets.only(top: 5, right: 10, left: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -164,7 +164,7 @@ class DetailsFoodPage extends StatelessWidget {
                   // ...
                 },
               ),
-              SizedBox(height: height / 10),
+              SizedBox(height: height / 12),
 
               // Quantity
               Row(
@@ -173,14 +173,10 @@ class DetailsFoodPage extends StatelessWidget {
                   ItemsCounter(
                     foodItem: selectedFood,
                   ),
-                  GestureDetector(
-                    onTap: () => Get.to(() => Favourites()),
-                    child: Text("add"),
-                  )
                 ],
               ),
 
-              SizedBox(height: height / 60),
+              SizedBox(height: height / 90),
               // Add to cart container
               Container(
                 height: height / 9,

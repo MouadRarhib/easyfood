@@ -19,7 +19,7 @@ class ProductItem extends StatelessWidget {
     final FoodController foodController = Get.put(FoodController());
 
     return Container(
-      height: Dimenssion.height30(context) * 5, // Adjust the height as needed
+      height: Dimenssion.height30(context) * 4, // Adjust the height as needed
       width: Dimenssion.width30(context) * 15,
       child: PageView.builder(
         scrollDirection: Axis.horizontal,

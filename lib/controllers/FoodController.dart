@@ -1,3 +1,5 @@
+import 'package:easyfood/controllers/AuthController/AuthController.dart';
+import 'package:easyfood/controllers/AuthController/api_urls.dart';
 import 'package:easyfood/models/foodModel.dart';
 import 'package:easyfood/utils/constant.dart';
 import 'package:get/get.dart';
@@ -19,19 +21,28 @@ class FoodController extends GetxController {
 
   Future<void> fetchFoods() async {
     try {
-      final response = await http.get(Uri.parse('${Constants.baseUrl}/getall'));
+      // Define the URL directly
+      final String url = 'http://192.168.1.101:8000/api/food/getall';
+
+      // Print the URL before making the request
+      print('Fetching foods from URL: $url');
+
+      final response = await http.get(Uri.parse(url));
+
+      // Print the URL after making the request
+      print('Fetched foods from URL: $url');
+
       if (response.statusCode == 200) {
         final List<dynamic> responseData = json.decode(response.body);
         foods = responseData.map((data) => Food.fromJson(data)).toList();
         update();
         print('Foods fetched successfully: $foods'); // Print the fetched foods
       } else {
+        // Retry logic here, e.g., using a timer to retry after a delay
         print('Failed to fetch foods. Status code: ${response.statusCode}');
-        // Handle the error or implement retry logic
       }
     } catch (error) {
       print('Error fetching foods: $error');
-      // Handle the error
     }
   }
 

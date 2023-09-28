@@ -14,7 +14,7 @@ class FoodProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColors.backgroundColor,
+        backgroundColor: Colors.grey.shade300,
         appBar: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: AppColors.backgroundColor,
@@ -29,7 +29,7 @@ class FoodProducts extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 150),
                   child: BigText(
-                    text: 'Foods',
+                    text: 'Menu',
                     color: AppColors.textColor,
                   ),
                 ),
@@ -63,51 +63,54 @@ class FoodProducts extends StatelessWidget {
                           ),
                           arguments: foodproducts);
                     },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
-                        color: AppColors.containerColor,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.network(
-                              foodproducts.imageUrl,
-                              fit: BoxFit.cover,
-                              height: 120.0,
-                              width: double.infinity,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          color: AppColors.containerColor,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Image.network(
+                                foodproducts.imageUrl,
+                                fit: BoxFit.cover,
+                                height: 110.0,
+                                width: double.infinity,
+                              ),
                             ),
-                          ),
-                          16.verticalSpace,
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Row(
-                              children: [
-                                SmallText(
-                                  text: foodproducts.name,
-                                  color: AppColors.textColor,
-                                  size: 15,
-                                ),
-                              ],
+                            5.verticalSpace,
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: Row(
+                                children: [
+                                  SmallText(
+                                    text: foodproducts.name,
+                                    color: AppColors.textColor,
+                                    size: 15,
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                          10.verticalSpace,
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Row(
-                              children: [
-                                SmallText(
-                                  text:
-                                      'Price: \$${foodproducts.price.toStringAsFixed(2)}',
-                                  color: AppColors.textColor,
-                                  size: 15,
-                                ),
-                              ],
+                            5.verticalSpace,
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: Row(
+                                children: [
+                                  SmallText(
+                                    text:
+                                        ' \$${foodproducts.price.toStringAsFixed(2)}',
+                                    color: AppColors.textColor,
+                                    size: 14,
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   );

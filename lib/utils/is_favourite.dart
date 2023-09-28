@@ -1,4 +1,5 @@
 import 'package:easyfood/models/foodModel.dart';
+import 'package:easyfood/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:easyfood/controllers/ViewControllers/favouritesController.dart'; // Import the FavouritesController
@@ -42,7 +43,7 @@ class _FavoriteIconToggleState extends State<FavoriteIconToggle> {
       },
       child: Icon(
         isFavorite ? Icons.favorite : Icons.favorite_border_rounded,
-        color: Colors.red, // Change the color as needed
+        color: AppColors.titlecolor, // Change the color as needed
         size: 30,
       ),
     );

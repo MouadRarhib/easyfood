@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
-
   final VoidCallback onTap;
+  final bool isLoading; // Add this line
 
   const CustomButton({
     required this.text,
     required this.onTap,
+    required this.isLoading, // Add this line
   });
 
   @override
